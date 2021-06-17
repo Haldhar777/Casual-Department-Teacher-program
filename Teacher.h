@@ -1,6 +1,13 @@
 #ifndef TEACHER_H
 #define TEACHER_H
 
+#include"Department.h"
+#include <functional>
+#include<vector>
+#include<iterator>
+#include <cstddef>
+
+
 class Teacher{
 
     std::string m_name{};
@@ -28,9 +35,12 @@ public:
     friend void Department::addTeacherandSubject( Teacher& teacher,const std::string& subject);
 
     std::string getName() const {return m_name;}
-    const std::size_t getsubSize() const {return std::size(m_subject);}
-    const std::size_t getDepatSize() const{return std::size(m_depat);}
+    const std::size_t getsubSize() const {return m_subject.size();}
+    const std::size_t getDepatSize() const{return m_depat.size();}
 
 };
+
+
+
 
 #endif /*TEACHER_H*/
