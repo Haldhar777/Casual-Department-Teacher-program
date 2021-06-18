@@ -1,26 +1,34 @@
-#include"Teacher.h"
+#include <iostream>
 #include"Department.h"
-#include<iostream>
+#include"Teacher.h"
+#include <string>
+#include <map>
 
 
 int main(){
-    Teacher alex{"Alex","PHD in CS"};
-    Teacher nascardriver{"Nas","Masters in CS"};
-    Teacher haldhar{"Haldhar","studying in learncpp"};
+    Teacher alex{"Alex","Owner of learncpp"};
+    std::map<int,const std::string> m_subject{{01,"Physics"},
+        {2,"Chem"},
+        {3,"Maths"},
+        {4,"DSA"},
+        {5,"OS"},
+        {6,"CSA"},
+        {7,"DBMS"},
+        {8,"JAVA"}};
 
+    Department CS{"CSE",m_subject};
+    
 
-    Department CS{"Computer Science"};
+    CS.addTeacher(&alex);
+    CS.addSubject(&alex,CS.getSubject(1));
+    CS.addSubject(&alex,CS.getSubject(7));
 
-    CS.addTeacherandSubject(alex,CS.getSubject(0));
-    CS.addTeacherandSubject(nascardriver,CS.getSubject(1));
-
-    //std::cout<<CS.getSize()<<'\n';
-
-
-
-    std::cout<<alex<<'\n'<<nascardriver<<'\n';
-    std::cout<<haldhar<<'\n';
     std::cout<<CS<<'\n';
+    std::cout<<alex<<'\n';
+
+    Teacher nascardriver("nascar","friend of alex");
+    std::cout<<nascardriver<<'\n';
+
 
     return 0;
 }

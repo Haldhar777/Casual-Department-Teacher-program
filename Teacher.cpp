@@ -2,25 +2,26 @@
 
 
 std::ostream& operator<<(std::ostream& out,const Teacher& teacher){
-    out<<"Name: "<<teacher.m_name<<"\nQualification : "<<teacher.m_qualification<<"\nDepartment : " ;  //<<teacher.m_depat[0].get().getName()
-    if(teacher.getDepatSize()!=0){
-        out<<teacher.m_depat[0].get().getName();
-    }
-    else{
-        out<<"Not working in any department";
-    }
-    out<<"\nSubject(s) : ";
-    if(teacher.getsubSize()!=0){
-    for (std::size_t i = 0; i <teacher.getsubSize(); ++i)
-    {
-        out<<teacher.m_subject[i].get()<<' ';//should I make a map for storing the subject in Department with a subject code 
-    }//how to give an iterator to for-each loop
-    out<<'\n';
-    }
-    else{
-        out<<"Currently not teaching any subjects\n";
-    }
+    out<<"Teacher : "<<teacher.T_name<<'\n';
+    out<<"Qualification : "<<teacher.T_qualification<<'\n';
+    out<<"Department : ";
+    if(teacher.T_depat!=nullptr){
+        out<<teacher.T_depat->getDname()<<'\n';
+        out<<"He teaches : ";
+        if(teacher.T_subject.empty()){
+            out<<"Currently not assigned ay subjects";
+        }
+        else{
+            char delim = ' ';
+            for(const auto& subject:teacher.T_subject){
 
-    
+                out<<delim<<subject.second;
+                delim = ',';
+            }
+        }
+        out<<'\n';
+    }
+    else
+        out<<"Not working in any Department\n";
     return out;
 }

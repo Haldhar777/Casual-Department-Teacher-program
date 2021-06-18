@@ -2,45 +2,43 @@
 #define TEACHER_H
 
 #include"Department.h"
-#include <functional>
-#include<vector>
-#include<iterator>
-#include <cstddef>
+#include<string>
+#include <map>
+
+class Department;
 
 
 class Teacher{
-
-    std::string m_name{};
-    std::string m_qualification{};
-
-    std::vector<std::reference_wrapper<const std::string>> m_subject{};
-    std::vector<std::reference_wrapper<const Department>> m_depat{}; 
-    
+    std::string T_name{};
+    std::string T_qualification{};
+    std::map<int,const std::string> T_subject;
+    Department* T_depat{};
 private:
+    void addSubjects(std::pair<int,const std::string> subject){
+        T_subject.insert(subject);
+    }
 
-    void addDepartmentandSubject(const Department& depat,const std::string& subject)
-    {
-        m_depat.push_back(depat);
-        m_subject.push_back(subject);
+    void addDepartment(Department* depat){
+        T_depat = depat;
     }
 
 public:
     Teacher() = default;
-    
-    Teacher(const std::string& name="unnammed",const std::string& qualification = "unknown")
-    :m_name{name}, m_qualification{qualification} {}
+    Teacher(const std::string& name="",const std::string& qualification="")
+    :T_name{name},T_qualification{qualification}{}
+
+    friend void Department::addSubject( Teacher* teacher,std::pair<int,const std::string> subject);
 
     friend std::ostream& operator<<(std::ostream& out,const Teacher& teacher);
 
-    friend void Department::addTeacherandSubject( Teacher& teacher,const std::string& subject);
+    const std::map<int,const std::string>& getSubmap() const{
+        return T_subject;
+    }
 
-    std::string getName() const {return m_name;}
-    const std::size_t getsubSize() const {return m_subject.size();}
-    const std::size_t getDepatSize() const{return m_depat.size();}
+    const std::string& getTname() const{
+        return T_name;
+    }
 
 };
 
-
-
-
-#endif /*TEACHER_H*/
+#endif
