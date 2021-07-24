@@ -7,6 +7,19 @@ void Department::addSubject( Teacher* teacher,std::pair<int,const std::string> s
     teacher->addDepartment(this);
 }
 
+void Department::addTeacher(Teacher* teacher){
+     D_teacher.push_back(teacher);
+        teacher->addDepartment(this);
+}
+
+Department::~Department(){
+    for (std::size_t i = 0; i < D_teacher.size(); ++i)
+    {
+        D_teacher[i]->T_subject.clear();
+        D_teacher[i]->T_depat = nullptr;
+    }
+}
+
 std::ostream& operator<<(std::ostream& out,const Department& depat){
     out<<"Department : "<<depat.D_name<<'\n';
     out<<"Subject code\tSubject\t\tTeacher\n";

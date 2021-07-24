@@ -7,6 +7,7 @@
 
 int main(){
     Teacher alex{"Alex","Owner of learncpp"};
+
     std::map<int,const std::string> m_subject{{01,"Physics"},
         {2,"Chem"},
         {3,"Maths"},
@@ -16,6 +17,7 @@ int main(){
         {7,"DBMS"},
         {8,"JAVA"}};
 
+        
     Department CS{"CSE",m_subject};
     
 
@@ -24,9 +26,12 @@ int main(){
     CS.addSubject(&alex,CS.getSubject(7));
 
     std::cout<<CS<<'\n';
+
+
     std::cout<<alex<<'\n';
 
     Teacher nascardriver("nascar","friend of alex");
+    CS.addTeacher(&nascardriver);
     std::cout<<nascardriver<<'\n';
 
 

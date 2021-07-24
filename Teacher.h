@@ -11,6 +11,7 @@ class Department;
 class Teacher{
     std::string T_name{};
     std::string T_qualification{};
+public:
     std::map<int,const std::string> T_subject;
     Department* T_depat{};
 private:
@@ -28,6 +29,7 @@ public:
     :T_name{name},T_qualification{qualification}{}
 
     friend void Department::addSubject( Teacher* teacher,std::pair<int,const std::string> subject);
+    friend void Department::addTeacher(Teacher* teacher);
 
     friend std::ostream& operator<<(std::ostream& out,const Teacher& teacher);
 
