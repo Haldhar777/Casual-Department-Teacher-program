@@ -29,6 +29,11 @@ int main(){
 
 
     std::cout<<alex<<'\n';
+    CS.retainSubject(&alex);
+
+    std::cout<<CS<<'\n';
+    std::cout<<alex<<'\n';
+
 
     Teacher nascardriver("nascar","friend of alex");
     CS.addTeacher(&nascardriver);

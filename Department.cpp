@@ -12,6 +12,10 @@ void Department::addTeacher(Teacher* teacher){
         teacher->addDepartment(this);
 }
 
+void Department::retainSubject(Teacher* teacher){
+    teacher->removeSubject();
+}
+
 Department::~Department(){
     for (std::size_t i = 0; i < D_teacher.size(); ++i)
     {

@@ -6,7 +6,7 @@
 #include <map>
 #include<vector>
 #include <string>
-//#include"Teacher.h"
+
 
 class Teacher;
 
@@ -26,6 +26,8 @@ public:
     void addTeacher( Teacher* teacher);
 
     void addSubject( Teacher* teacher,std::pair<int,const std::string> subject);
+
+    void retainSubject(Teacher* teacher);
 
     std::pair<int,const std::string> getSubject(int subCode){
         
