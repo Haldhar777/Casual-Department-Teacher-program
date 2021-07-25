@@ -12,10 +12,12 @@ class Teacher;
 
 class Department{
     std::string D_name{};
-    std::vector<Teacher*> D_teacher{};
     std::map<int,const std::string> D_subjects;
 
 public:
+
+    std::vector<Teacher*> D_teacher{};
+    
     using myMap = std::map<int,const std::string>;
    
     Department(const std::string& name="",const myMap& subjects = myMap() )
@@ -28,6 +30,8 @@ public:
     void addSubject( Teacher* teacher,std::pair<int,const std::string> subject);
 
     void retainSubject(Teacher* teacher);
+
+    void dismissTeacher(Teacher* teacher);
 
     std::pair<int,const std::string> getSubject(int subCode){
         

@@ -1,6 +1,7 @@
 #include"Department.h"
 #include "Teacher.h"
 #include<iostream>
+#include<algorithm>
 
 void Department::addSubject( Teacher* teacher,std::pair<int,const std::string> subject){
     teacher->addSubjects( subject);
@@ -16,6 +17,23 @@ void Department::retainSubject(Teacher* teacher){
     teacher->removeSubject();
 }
 
+void Department::dismissTeacher(Teacher* teacher){
+    teacher->T_subject.clear();
+    teacher->T_depat = nullptr;
+
+    auto compare{
+        [teacher](const Teacher* t){
+            return t->getTname() == teacher->getTname();
+        }
+    };
+
+    auto it{
+        std::find_if(D_teacher.begin(),D_teacher.end(),compare)
+    };
+    if(it!=D_teacher.end()){
+        D_teacher.erase(it);
+    }
+    }
 Department::~Department(){
     for (std::size_t i = 0; i < D_teacher.size(); ++i)
     {

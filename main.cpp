@@ -8,7 +8,7 @@
 int main(){
     Teacher alex{"Alex","Owner of learncpp"};
 
-    std::map<int,const std::string> m_subject{{01,"Physics"},
+    std::map<int,const std::string> m_subject{{1,"Physics"},
         {2,"Chem"},
         {3,"Maths"},
         {4,"DSA"},
@@ -34,9 +34,16 @@ int main(){
     std::cout<<CS<<'\n';
     std::cout<<alex<<'\n';
 
-
+    CS.dismissTeacher(&alex);
     Teacher nascardriver("nascar","friend of alex");
     CS.addTeacher(&nascardriver);
+    CS.addSubject(&nascardriver,CS.getSubject(1));
+
+    std::cout<<CS<<'\n';
+    std::cout<<alex<<'\n';
+
+
+    
     std::cout<<nascardriver<<'\n';
 
 
